@@ -1,0 +1,57 @@
+  <button (click)="showCust=true" >Show Primitive Types</button>
+<div [hidden]="showCust == false">
+  {{labels[0]}}: {{custData.custName}}
+  <br>
+  {{labels[1]}}: {{custData.dob}}
+  <br>
+  {{labels[2]}}: {{custData.custAge}}
+  <br>
+  Active Customer: {{custData.isActive}}
+<br>
+</div>
+<br>
+<br>
+<br>
+<div>
+  <button (click)="showAddr=true">Show Json Objects</button>
+</div>
+  <div [hidden]="showAddr == false">
+{{labels[4]}}:<div id="ciResponseText"> {{custData.custAddress}}</div>
+  </div>
+
+<br>
+<br>
+<button (click)="visibleRowIndex=i">
+  Show List Types</button>
+<br>
+<div [hidden]="visibleRowIndex !==i">
+
+	<table *ngIf="accountDetails">
+		<h3>Account Details</h3>
+		<tr>
+			<th>ID</th>
+			<th>Amount</th>
+			<th>Currency</th>
+		</tr>
+
+		<!-- BIND ARRAY TO TABLE -->
+		<tr *ngFor="let account of accountDetails; let i=index">
+			<td>{{account.accountId}}</td>
+			<td>{{account.amount}}</td>
+			<td>{{account.currency}}</td>
+			<h3>Bill Details</h3>
+			<table *ngIf="accountDetails">
+				<tr>
+					<th>Bill ID</th>
+					<th>Bill Date</th>
+					<th>Bill Amount</th>
+				</tr>
+				<tr *ngFor="let bill of account.bills">
+					<td>{{bill.billId}}</td>
+					<td>{{bill.billDt}}</td>
+					<td>{{bill.amount}}</td>
+				</tr>
+			</table>
+		</tr>
+	</table>
+</div>
